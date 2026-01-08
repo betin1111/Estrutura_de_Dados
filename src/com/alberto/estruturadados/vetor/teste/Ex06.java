@@ -30,7 +30,7 @@ public class Ex06 {
 				break;
 			}
 			case 3: {
-				obtemContatoPelaPosicao(scan, lista);
+				obtemContatoPosicao(scan, lista);
 				break;
 			}
 			case 4: {
@@ -38,15 +38,19 @@ public class Ex06 {
 				break;
 			}
 			case 5: {
+				pesquisarUltimoIndice(scan, lista);
 				break;
 			}
 			case 6: {
+				pesquisarContatoExiste(scan, lista);
 				break;
 			}
 			case 7: {
+				excluirPorPosicao(scan, lista);
 				break;
 			}
 			case 8: {
+				excluirContato(scan, lista);
 				break;
 			}
 			case 9: {
@@ -61,6 +65,7 @@ public class Ex06 {
 
 			}
 		}
+		System.out.println("\nO usuário digitou 0, programa terminado\n\n");
 
 	}
 
@@ -78,36 +83,117 @@ public class Ex06 {
 		System.out.println(contato);
 	}
 
-	private static void obtemContatoPelaPosicao(Scanner scan, Lista<Contato> lista) {
+	private static void obtemContatoPosicao(Scanner scan, Lista<Contato> lista) {
 
-		int pos = leInformacaoInt("Entre com a posição a ser pesquisad: ", scan);
+		int pos = leInformacaoInt("Entre com a posição a ser pesquisada: ", scan);
 
 		try {
 			Contato contato = lista.busca(pos);
-			
-			System.out.println("Contato existe, seguem dados: ");
+
+			System.out.println("\nContato existe, seguem dados: \n");
 			System.out.println(contato);
-			
-			
+
 		} catch (Exception e) {
-			System.out.println("Posição Invalida!");
+			System.out.println("\nPosição Invalida!\n");
 		}
 	}
+
 	private static void obtemContato(Scanner scan, Lista<Contato> lista) {
 
 		int pos = leInformacaoInt("Entre com a posição a ser pesquisada: ", scan);
 
 		try {
 			Contato contato = lista.busca(pos);
-			
+
 			System.out.println("Contato existe, seguem dados: ");
 			System.out.println(contato);
-			
+
 			System.out.println("Fazendo pesquisa do contato encontrado: ");
-			int pos1 = lista.busca(contato);
-			
-			System.out.println("\nContato encontrado na posição " + pos1+"\n");
-			
+			pos = lista.busca(contato);
+
+			System.out.println("\nContato encontrado na posição " + pos + "\n");
+
+		} catch (Exception e) {
+			System.out.println("Posição Invalida!");
+		}
+	}
+
+	private static void pesquisarUltimoIndice(Scanner scan, Lista<Contato> lista) {
+
+		int pos = leInformacaoInt("Entre com a posição a ser pesquisada: ", scan);
+
+		try {
+			Contato contato = lista.busca(pos);
+
+			System.out.println("Contato existe, seguem dados: ");
+			System.out.println(contato);
+
+			System.out.println("Fazendo pesquisa do ultimo índice do contato encontrado: ");
+			pos = lista.ultimoIndice(contato);
+
+			System.out.println("\nContato encontrado na posição " + pos + "\n");
+
+		} catch (Exception e) {
+			System.out.println("Posição Invalida!");
+		}
+	}
+
+	private static void pesquisarContatoExiste(Scanner scan, Lista<Contato> lista) {
+
+		int pos = leInformacaoInt("Entre com a posição a ser pesquisada: ", scan);
+
+		try {
+			Contato contato = lista.busca(pos);
+
+			System.out.println("Contato existe, seguem dados: ");
+			System.out.println(contato);
+
+			boolean existe = lista.contem(contato);
+
+			if (existe) {
+
+				System.out.println("Contato existe, seguem dados: ");
+				System.out.println(contato);
+
+			} else {
+
+				System.out.println("Contato no encontrado");
+			}
+
+		} catch (Exception e) {
+			System.out.println("Posição Invalida!");
+		}
+	}
+
+	private static void excluirPorPosicao(Scanner scan, Lista<Contato> lista) {
+
+		int pos = leInformacaoInt("Entre com a posição a ser pesquisada: ", scan);
+
+		try {
+			Contato contato = lista.busca(pos);
+			System.out.println(contato);
+
+			lista.remove(contato);
+
+			System.out.println("Contato exluído! ");
+
+		} catch (Exception e) {
+			System.out.println("Posição Invalida!");
+		}
+	}
+	
+	private static void excluirContato(Scanner scan, Lista<Contato> lista) {
+
+		int pos = leInformacaoInt("Entre com a posição a ser pesquisada: ", scan);
+
+		try {
+			Contato contato = lista.busca(pos);
+			System.out.println(contato);
+
+			lista.remove(contato);
+
+			System.out.println("Contato exluído! ");
+
 		} catch (Exception e) {
 			System.out.println("Posição Invalida!");
 		}
@@ -153,8 +239,9 @@ public class Ex06 {
 				entradaValida = true;
 
 			} catch (Exception e) {
+				System.out.println("Entrada Invalida, digite novamente!");
 			}
-			System.out.println("Entrada Invalida, digite novamente!");
+			
 		}
 		return num;
 

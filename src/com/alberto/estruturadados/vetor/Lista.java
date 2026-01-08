@@ -35,11 +35,8 @@ public class Lista<T> {
 		return this.elementos[posicao];
 	}
 
-	/*
-	 * Como trata-se de comparação de elemento e não tem /posição de entrada, nao há
-	 * necessidade de verificar range posições
-	 */
-
+	//Como trata-se de comparação de elemento e não tem posição de entrada, nao há necessidade de verificar range posições
+	 
 	public int busca(T elemento) {
 		for (int i = 0; i < this.tamanho; i++) {
 			if (this.elementos[i].equals(elemento)) {
