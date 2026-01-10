@@ -35,8 +35,9 @@ public class Lista<T> {
 		return this.elementos[posicao];
 	}
 
-	//Como trata-se de comparação de elemento e não tem posição de entrada, nao há necessidade de verificar range posições
-	 
+	// Como trata-se de comparação de elemento e não tem posição de entrada, nao há
+	// necessidade de verificar range posições
+
 	public int busca(T elemento) {
 		for (int i = 0; i < this.tamanho; i++) {
 			if (this.elementos[i].equals(elemento)) {
@@ -46,14 +47,14 @@ public class Lista<T> {
 		return -1;
 	}
 
-	/*public Contato get(int posicao) {
-		if (!(posicao >= 0 && posicao < this.tamanho)) {
-			throw new IndexOutOfBoundsException(" Indice " + posicao + ", Tamanho " + tamanho);
-		}
-		return (Contato) this.elementos[posicao];
+	/*
+	 * public Contato get(int posicao) { if (!(posicao >= 0 && posicao <
+	 * this.tamanho)) { throw new IndexOutOfBoundsException(" Indice " + posicao +
+	 * ", Tamanho " + tamanho); } return (Contato) this.elementos[posicao];
+	 * 
+	 * }
+	 */
 
-	}*/
-	
 	public T get(int elemento) {
 		return this.busca(elemento);
 	}
@@ -124,21 +125,19 @@ public class Lista<T> {
 		this.elementos[tamanho] = null;
 	}
 
-	@SuppressWarnings("unchecked")
 	public void limpar() {
-		//opção 1
+		// opção 1
 		for (int i = 0; i < tamanho; i++) {
 			this.elementos[i] = null;
 
 		}
-		//tamanho = 0;
-		
-		//opção 2
-		//this.tamanho = 0;
-		
-		//opção3
-		this.elementos = (T[]) new  Object[this.elementos.length];
-		
+
+		// opção 2
+		// this.tamanho = 0;
+
+		// opção3
+		// this.elementos = (T[]) new Object[this.elementos.length];
+
 	}
 
 	public int tamanho() {
@@ -165,9 +164,8 @@ public class Lista<T> {
 	 * 
 	 * s.append("[");
 	 * 
-	 * for (int i = 0; i < this.tamanho - 1; i++) {
-	 * 	s.append(this.elementos[i]);
-	 * 	s.append(", "); }
+	 * for (int i = 0; i < this.tamanho - 1; i++) { s.append(this.elementos[i]);
+	 * s.append(", "); }
 	 * 
 	 * // Code para nao ficar um monte de null if (this.elementos[tamanho - 1] !=
 	 * null) { s.append(elementos[tamanho - 1]); } s.append("]");
@@ -179,14 +177,14 @@ public class Lista<T> {
 	// return Arrays.toString(Arrays.copyOf(elementos, tamanho));
 	// }
 	public String toString() {
-		//Para o Remove
+		// Para o Remove
 		if (tamanho == 0) {
 			return "[]";
 		}
 
 		StringBuilder sb = new StringBuilder();
 		sb.append('[');
-		sb.append(elementos[0]); // Elemento 0 adicionando 
+		sb.append(elementos[0]); // Elemento 0 adicionando
 
 		for (int i = 1; i < tamanho; i++) { // por isso o "i" começa com 1
 			sb.append(", ");

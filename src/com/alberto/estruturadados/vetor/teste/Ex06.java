@@ -54,19 +54,45 @@ public class Ex06 {
 				break;
 			}
 			case 9: {
+				imprimeTamanhoVetor(lista);
 				break;
 			}
 			case 10: {
+				limparVetor(lista);
 				break;
 			}
 			case 11: {
+				imprimirVetor(lista);
+				break;
+			}
+			default: {
 				break;
 			}
 
 			}
+
 		}
+		
 		System.out.println("\nO usuário digitou 0, programa terminado\n\n");
 
+	}
+
+	private static void imprimirVetor(Lista<Contato> lista) {
+
+		System.out.println(lista);
+
+	}
+
+	private static void limparVetor(Lista<Contato> lista) {
+
+		lista.limpar();
+
+		System.out.println("Todos os contatos foram Excluídos");
+	}
+
+	private static void imprimeTamanhoVetor(Lista<Contato> lista) {
+
+		System.out.println("Tamanho do vetor é de: " + lista.tamanho);
 	}
 
 	private static void adicionarContatoFinal(Scanner scan, Lista<Contato> lista) {
@@ -170,10 +196,8 @@ public class Ex06 {
 		int pos = leInformacaoInt("Entre com a posição a ser pesquisada: ", scan);
 
 		try {
-			Contato contato = lista.busca(pos);
-			System.out.println(contato);
 
-			lista.remove(contato);
+			lista.remove(pos);
 
 			System.out.println("Contato exluído! ");
 
@@ -181,7 +205,7 @@ public class Ex06 {
 			System.out.println("Posição Invalida!");
 		}
 	}
-	
+
 	private static void excluirContato(Scanner scan, Lista<Contato> lista) {
 
 		int pos = leInformacaoInt("Entre com a posição a ser pesquisada: ", scan);
@@ -241,7 +265,7 @@ public class Ex06 {
 			} catch (Exception e) {
 				System.out.println("Entrada Invalida, digite novamente!");
 			}
-			
+
 		}
 		return num;
 
@@ -287,17 +311,18 @@ public class Ex06 {
 		return opcao;
 	}
 
-	private static void criarContato(Lista<Contato> contato, int quantidade) {
+	private static void criarContato(Lista<Contato> lista, int quantidade) {
 
-		Contato contato1 = new Contato();
+		Contato contato;
 		;
 		for (int i = 0; i < quantidade; i++) {
 
-			contato1.setNome("Contado" + i);
-			contato1.setTelefone("123" + i + "123" + i);
-			contato1.setEmail("Contato" + i + "@email.com");
+			contato= new Contato();
+			contato.setNome("Contado" + i);
+			contato.setTelefone("123" + i + "123" + i);
+			contato.setEmail("Contato" + i + "@email.com");
 
-			contato.adiciona(contato1);
+			lista.adiciona(contato);
 
 		}
 	}
